@@ -15,7 +15,6 @@ metadata:
   name: tf-controller
   namespace: tanzu-continuousdelivery-resources
 spec:
-  createNamespace: true
   chart:
     spec:
       chart: tf-controller
