@@ -24,7 +24,7 @@ spec:
       version: '>=0.16.0-rc.4'
   interval: 1h0s
   releaseName: tf-controller
-  targetNamespace: tf-controller-system
+  targetNamespace: flux-system
   install:
     createNamespace: true
     crds: Create
@@ -53,9 +53,6 @@ spec:
         tag: v0.16.0-rc.4
       grpc:
         maxMessageSize: 30
-      serviceAccount:
-        allowedNamespaces:
-        - tf-controller-system
     branchPlanner:
       enabled: true
       image:
