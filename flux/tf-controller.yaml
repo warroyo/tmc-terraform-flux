@@ -15,6 +15,7 @@ metadata:
   name: tf-controller
   namespace: tanzu-continuousdelivery-resources
 spec:
+  createNamespace: true
   chart:
     spec:
       chart: tf-controller
@@ -24,9 +25,9 @@ spec:
       version: '>=0.16.0-rc.2'
   interval: 1h0s
   releaseName: tf-controller
-  createNamespace: true
   targetNamespace: tf-controller-system
   install:
+    createNamespace: true
     crds: Create
     remediation:
       retries: -1
