@@ -7,11 +7,13 @@ This repo is an example of how to use the [terraform controller](https://flux-ia
 There are a few steps to how this repo works.
 
 1. use the TMC provided CD feature to bootstrap clusters with Flux
-2. use Flux to install the Terraform controller for Flux
-3. Setup the Terraform Controller to use the [Branch Planner](https://flux-iac.github.io/tofu-controller/branch-planner/) feature.
-4. create a Terraform resource to watch the Terraform git repo
-5. create a new branch and PR with your TF changes and watch the branch planner work
-6. merge the branch and the Terraform resource will reconcile
+1. use TMC opaque secrets to add secrets for the controller and terraform vars
+1. use Flux to install the Terraform controller for Flux
+1. Setup the Terraform Controller to use the [Branch Planner](https://flux-iac.github.io/tofu-controller/branch-planner/) feature.
+1. create a Terraform resource to watch the Terraform git repo
+1. create a new branch and PR with your TF changes and watch the branch planner work. it will create a temp `terraform` resource and `gitrepo` rerosurce, run a plan and comment on the PR with the plan output.
+1. merge the branch and the Terraform resource will reconcile
+
 
 # Setup
 
@@ -24,7 +26,7 @@ There are a few steps to how this repo works.
 
 ## Create secret for the github token
 
-in the flux-system namespace create secret that holds the github api token. This can easily be done with TMC generic secrets on the cluster or cluster group.
+In the flux-system namespace create secret that holds the github api token. This can easily be done with TMC generic secrets on the cluster or cluster group.
 
 the secret should be named `branch-planner-token` and have a key of `token` and the value being the api token. 
 
@@ -59,7 +61,7 @@ All of the code for terraform lives in the `terraform` directory this is what is
 
 ## Updating Flux Code
 
-All of the Flux code lives in the `flux` directory. This includes the `HelmRelease` that installs the terraform controller. You can add any other things that need to be installed here. also this can be changed to update config for the Terraform Controller. 
+All of the Flux code lives in the `flux` directory. This includes the `HelmRelease` that installs the terraform controller. You can add any other things that need to be installed here. also this can be changed to update config for the Terraform Controller. The `terraform` resource that initializes the terraform run lives in the `flux/terraform-resources` folder. 
 
 
 ## backing up state
