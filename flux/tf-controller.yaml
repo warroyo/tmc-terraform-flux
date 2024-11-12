@@ -53,6 +53,9 @@ spec:
         tag: v0.16.0-rc.2
       grpc:
         maxMessageSize: 30
+      serviceAccount:
+        allowedNamespaces:
+        - tf-controller-system
     branchPlanner:
       enabled: true
       image:
