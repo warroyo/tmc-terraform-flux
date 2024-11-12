@@ -4,5 +4,4 @@ generatorOptions:
   disableNameSuffixHash: true
 
 resources:
-- tf-controller.yaml
-- tf-resources.yaml
+- tmc.yaml
