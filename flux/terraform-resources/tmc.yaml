@@ -11,3 +11,6 @@ spec:
     kind: GitRepository
     namespace: tanzu-continuousdelivery-resources
     name: tmc-tf-flux
+  varsFrom:
+  - kind: Secret
+    name: tf-tmc-token

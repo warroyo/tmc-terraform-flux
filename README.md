@@ -22,6 +22,16 @@ There are a few steps to how this repo works.
 * TMC API TOKEN
 * [GitHub API Token](https://flux-iac.github.io/tofu-controller/branch-planner/branch-planner-getting-started/#prerequisites)
 
+## Create secret for the github token
+
+in the flux-system namespace create secret that holds the github api token. This can easily be done with TMC generic secrets on the cluster or cluster group.
+
+the secret should be named `branch-planner-token` and have a key of `token` and the value being the api token. 
+
+## Create a secret for the TMC token
+
+create a secret in TMC on the cluster for the TMC credentials. First generate a token for TMC, then create the secret with the name `tf-tmc-token` in the `flux-system`  namespace. use the key `tmc_token` and the token as the value.
+
 ## Enable CD on your TMC Cluster/ClusterGroup
 
 Steps to do this can be found in the official docs. For simplicity the steps are outlined below.
@@ -50,3 +60,8 @@ All of the code for terraform lives in the `terraform` directory this is what is
 ## Updating Flux Code
 
 All of the Flux code lives in the `flux` directory. This includes the `HelmRelease` that installs the terraform controller. You can add any other things that need to be installed here. also this can be changed to update config for the Terraform Controller. 
+
+
+## backing up state
+
+becuase by default
