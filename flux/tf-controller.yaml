@@ -35,6 +35,7 @@ spec:
     remediation:
       retries: -1
   values:
+    allowCrossNamespaceRefs: true
     replicaCount: 3
     concurrency: 24
     resources:
