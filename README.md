@@ -20,7 +20,7 @@ There are a few steps to how this repo works.
 * TMC
 * TMC cluster
 * TMC API TOKEN
-* [GitHub API Token](https://flux-iac.github.io/tofu-controller/branch-planner/branch-planner-getting-started/#prerequisites)
+* [GitHub API Token](https://flux-iac.github.io/tofu-controller/branch-planner/branch-planner-getting-started/#prerequisites) - the docs say that permissions are not needed for publci repos however I found that not to be true so I created a token with the outlined permissions 
 
 ## Create secret for the github token
 
@@ -64,4 +64,4 @@ All of the Flux code lives in the `flux` directory. This includes the `HelmRelea
 
 ## backing up state
 
-becuase by default
+becuase by default this controller uses k8s for TF state, the state is stored in a k8s secret. This is convenient with TMC since you can use the build in data protection to back up the state. 
