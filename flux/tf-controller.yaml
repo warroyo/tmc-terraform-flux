@@ -24,7 +24,8 @@ spec:
       version: '>=0.16.0-rc.2'
   interval: 1h0s
   releaseName: tf-controller
-  targetNamespace: flux-system
+  createNamespace: true
+  targetNamespace: tf-controller-system
   install:
     crds: Create
     remediation:
